@@ -19,12 +19,15 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 eval "$(starship init zsh)"
 
+export PATH="$HOME/DevTools/nvim@0.12/bin:$PATH"
+
 # Aliases
 alias ll='ls -lahG'
 alias gc='git commit'
 alias gp='git push'
 alias gl='git pull'
-alias vi='NVIM_APPNAME=nvims/LazyVim nvim'
+alias vi='NVIM_APPNAME=nvims/lite nvim@0.12'
+alias lvi='NVIM_APPNAME=nvims/LazyVim nvim'
 alias cvi='NVIM_APPNAME=nvims/custom nvim'
 
 if [[ `uname` == Darwin ]]; then
