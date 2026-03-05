@@ -432,6 +432,10 @@ vim.pack.add({
 		branch = "main",
 		build = ":TSUpdate",
 	},
+  -- DAP
+  "https://www.github.com/mfussenegger/nvim-dap",
+  "https://www.github.com/nvim-neotest/nvim-nio",
+  "https://www.github.com/rcarriga/nvim-dap-ui",
 	-- Language Server Protocols
 	"https://www.github.com/neovim/nvim-lspconfig",
 	"https://github.com/mason-org/mason.nvim",
@@ -451,6 +455,10 @@ packadd("gitsigns.nvim")
 packadd("mini.nvim")
 packadd("fzf-lua")
 packadd("nvim-tree.lua")
+-- DAP
+packadd("nvim-dap")
+packadd("nvim-nio")
+packadd("nvim-dap-ui")
 -- LSP
 packadd("nvim-lspconfig")
 packadd("mason.nvim")
@@ -609,6 +617,23 @@ end, { desc = "Toggle inline blame" })
 vim.keymap.set("n", "<leader>hd", function()
 	require("gitsigns").diffthis()
 end, { desc = "Diff this" })
+
+-- ============================================================================
+-- DAP
+-- -- ============================================================================
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
 
 -- ============================================================================
 -- LSP, Linting, Formatting & Completion
