@@ -1,0 +1,37 @@
+general {
+    colors = true
+    interval = 5
+}
+
+order += "disk /"
+order += "cpu_usage"
+order += "memory"
+order += "battery all"
+order += "time"
+
+# Display disk usage
+disk "/" {
+    format = "Disk %avail"
+}
+
+# CPU usage
+cpu_usage {
+    format = "CPU %usage"
+}
+
+# Memory usage
+memory {
+    format = "RAM %used / %total"
+}
+
+# Battery status
+battery all {
+    format = "%status %percentage"
+    format_percentage = "%.00f%s"
+}
+
+# Time
+time {
+    format = "%Y-%m-%d %H:%M:%S"
+}
+
